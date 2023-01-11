@@ -26,20 +26,20 @@ class MainViewModel : ViewModel() {
 
     fun result() {
 
-        var value: Double? = ((result.value)?.toDouble())
+        val value: Double? = ((result.value)?.toDouble())
 
-        when {
-            operation == "*" -> result.value = (calcValue * value!!).toString()
-            operation == "/" -> result.value = (calcValue / value!!).toString()
-            operation == "-" -> result.value = (calcValue - value!!).toString()
-            operation == "+" -> result.value = (calcValue + value!!).toString()
+        when (operation) {
+            "*" -> result.value = (calcValue * value!!).toString()
+            "/" -> result.value = (calcValue / value!!).toString()
+            "-" -> result.value = (calcValue - value!!).toString()
+            "+" -> result.value = (calcValue + value!!).toString()
         }
 
         calcValue = 0.0
 
     }
 
-    fun erease() {
+    fun erase() {
         result.value = ""
         calcValue = 0.0
         operation = ""

@@ -38,14 +38,14 @@ class ActivityCalculator : AppCompatActivity() {
         )
 
         val result = R.id.result
-        val erease = R.id.erease
+        val erase = R.id.erease
 
         findViewById<Button>(result).setOnClickListener {
             viewModel.result()
         }
 
-        findViewById<Button>(erease).setOnClickListener {
-            viewModel.erease()
+        findViewById<Button>(erase).setOnClickListener {
+            viewModel.erase()
         }
 
         numbersId.forEach {
@@ -62,14 +62,14 @@ class ActivityCalculator : AppCompatActivity() {
 
     }
 
-    private fun bindNumbersClick(componnet: View) {
-        componnet.setOnClickListener {
+    private fun bindNumbersClick(component: View) {
+        component.setOnClickListener {
             viewModel.updateDisplay((it as Button).text.toString())
         }
     }
 
-    private fun bindOperationsClick(componnet: View) {
-        componnet.setOnClickListener {
+    private fun bindOperationsClick(component: View) {
+        component.setOnClickListener {
             viewModel.operation((it as Button).text.toString())
         }
     }
