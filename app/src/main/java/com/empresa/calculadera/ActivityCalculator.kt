@@ -1,5 +1,6 @@
 package com.empresa.calculadera
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -30,6 +31,13 @@ class ActivityCalculator : AppCompatActivity() {
             R.id.dot
         )
 
+        val planetsButton = R.id.planets_button
+
+        findViewById<Button>(planetsButton).setOnClickListener {
+            startActivity(Intent(this, ActivityPlanets::class.java))
+        }
+
+
         val operationsId = listOf(
             R.id.multiply,
             R.id.division,
@@ -59,6 +67,7 @@ class ActivityCalculator : AppCompatActivity() {
         viewModel.resultView.observe(this) {
             findViewById<TextView>(R.id.result_view).text = it
         }
+
 
     }
 
