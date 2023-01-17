@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.empresa.calculadera.databinding.PlanetsListBinding
 
 class PlanetsListAdapter(
-    private val planets: List<String>,
-    private val onClick: (String) -> Unit
+    private var planets: List<String>,
+    private val listner: OnPlanetClick
 ) :
 
     RecyclerView.Adapter<PlanetsListAdapter.ViewHolder>() {
@@ -17,7 +17,9 @@ class PlanetsListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(planet: String) {
             binding.tvPlanetsName.text = planet
-            binding.tvPlanetsName.setOnClickListener { onClick(planet) }
+            binding.tvPlanetsName.setOnClickListener {
+                listner.onSelect(planet)
+            }
         }
     }
 
@@ -39,5 +41,13 @@ class PlanetsListAdapter(
 
     override fun getItemCount() = planets.size
 
+    fun updateList(planets: List<String>) {
+        this.planets = planets
+        this.notifyDataSetChanged()
+    }
 
+}
+
+interface OnPlanetClick {
+    fun onSelect(planet: String)
 }
