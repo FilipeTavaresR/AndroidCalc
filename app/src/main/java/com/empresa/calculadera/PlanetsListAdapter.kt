@@ -1,7 +1,6 @@
 package com.empresa.calculadera
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -14,11 +13,11 @@ class PlanetsListAdapter(
 
     RecyclerView.Adapter<PlanetsListAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: PlanetsListBinding) :
+    inner class ViewHolder(val binding: PlanetsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(planet: String): View {
+        fun bind(planet: String) {
             binding.tvPlanetsName.text = planet
-            return binding.tvPlanetsName
+            binding.tvPlanetsName.setOnClickListener { onClick(planet) }
         }
     }
 
@@ -35,9 +34,7 @@ class PlanetsListAdapter(
 
     //Atribuir informação a cada um dos itens criados acima
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(planets[position]).setOnClickListener {
-            onClick(planets[position])
-        }
+        holder.bind(planets[position])
     }
 
     override fun getItemCount() = planets.size
